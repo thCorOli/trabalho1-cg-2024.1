@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WebGL Rectangle Drawing</title>
+        <title>Modelo 2</title>
         <style>
             canvas {
                 border: 1px solid black;
@@ -23,5 +23,23 @@
         <script src="../libs/webGLModel.js"></script>
         <script src="../libs/shapes2dWebGL.js"></script>
         <script src="../libs/webGLApp.js"></script>
+        <script src="./webGLLine.js"></script>
+        <script src="./webGLLineApp.js"></script>
     </body>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 aVertexPosition;
+        attribute vec4 aVertexColor;
+        varying lowp vec4 vColor;
+        void main(void) {
+            gl_Position = aVertexPosition;
+            vColor = aVertexColor;
+        }
+    </script>
+    
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        varying lowp vec4 vColor;
+        void main(void) {
+            gl_FragColor = vColor;
+        }
+    </script>
 </html>
