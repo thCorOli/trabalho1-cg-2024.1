@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Modelo 5</title>
-        <style>
-            canvas {
-                border: 1px solid black;
-                display: block;
-                margin: 10px auto;
-            }
-            button {
-                display: block;
-                margin: 10px auto;
-            }
-        </style>
-    </head>
-    <body>
-        <canvas id="webgl-canvas" width="800" height="600"></canvas>
-        <button id="clear-button">Clear</button>
-        <script src="../libs/shapes2d.js"></script>
-        <script src="../libs/webGLModel.js"></script>
-        <script src="../libs/shapes2dWebGL.js"></script>
-        <script src="../libs/webGLApp.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo 5</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 10px auto;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="webgl-canvas" width="800" height="600"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <script src="./shapes2d.js"></script>
+    <script src="./webGLModel.js"></script>
+    <script src="./shapes2dWebGL.js"></script>
+    <script src="./webGLApp.js"></script>
+    <script src="./webGLPolygonApp.js"></script>
+</body>
+<script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 aVertexPosition;
+    attribute vec4 aVertexColor;
+    varying lowp vec4 vColor;
+    uniform mat4 uModelViewMatrix;
+
+    void main(void) {
+        gl_Position = uModelViewMatrix * aVertexPosition;
+        vColor = aVertexColor;
+    }
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+    varying lowp vec4 vColor;
+    void main(void) {
+        gl_FragColor = vColor;
+    }
+</script>
 </html>
