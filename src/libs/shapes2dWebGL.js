@@ -1,7 +1,4 @@
 /* Classes com implementação WebGL dos objetos gráficos */
-
-
-
 // Avoid using. Too much resource use for a simple point
 // Prefer use WebGLPointList
 class WebGLPoint2d extends Point2d{
