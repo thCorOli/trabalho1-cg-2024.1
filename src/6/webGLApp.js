@@ -2,7 +2,7 @@ class WebGLMainApp {
     constructor() {
         this.canvas = document.getElementById("webgl-canvas");
         if (!this.canvas) {
-            alert("canvas could not be obtained");
+            alert("Nao encontrou o canva");
         }
         this.gl = this.canvas.getContext('webgl2');
         if (!this.gl) {
@@ -42,10 +42,6 @@ class WebGLMainApp {
         this.gl.attachShader(this.program, vertexShader);
         this.gl.attachShader(this.program, fragmentShader);
         this.gl.linkProgram(this.program);
-
-        if (!this.gl.getProgramParameter(this.program, this.gl.LINK_STATUS)) {
-            console.error('Could not initialize shaders');
-        }
 
         this.gl.useProgram(this.program);
 
